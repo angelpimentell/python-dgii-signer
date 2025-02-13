@@ -1,6 +1,6 @@
 # Python Dgii Signer
 
-Firmador de XML con Python enfocado para la DGII.
+Firmador de XML para DGII con Python.
 
 <br />
 
