@@ -85,6 +85,8 @@ class Signer:
 
         cleaned_xml = elementTree.tostring(signed_xml, encoding="unicode", method="xml")
 
+        cleaned_xml = '<?xml version="1.0" encoding="utf-8"?>' + cleaned_xml
+
         return cleaned_xml
 
 
