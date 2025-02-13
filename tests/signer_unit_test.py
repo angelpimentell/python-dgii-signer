@@ -9,7 +9,7 @@ def clean_content(xml_content):
     return xml_content.strip()
 
 
-def test_example():
+def test_sign_invoice():
     # Arrange
     signer = Signer(f"{pathlib.Path().resolve()}{os.sep}files{os.sep}certificate.p12", "admin")
     xml_content = open(f"{pathlib.Path().resolve()}{os.sep}files{os.sep}invoice.xml").read()
