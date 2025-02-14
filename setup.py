@@ -18,5 +18,5 @@ setup(
         "pycparser==2.22",
         "signxml==4.0.3",
     ],
-    python_requires=">=3.13.1",
+    python_requires=">=3.9.13",
 )
