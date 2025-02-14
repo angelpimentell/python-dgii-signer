@@ -6,7 +6,7 @@ Firmador de XML para DGII con Python.
 
 Requirements
 ```
-Python 3.13.1
+Python >= 3.9 | Python =< 3.13
 ```
 
 How to prepare
