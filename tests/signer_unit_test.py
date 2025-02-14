@@ -1,4 +1,4 @@
-from signers import DgiiSigner
+from dgii_signer import DgiiSigner
 import os
 from helpers import clean_xml
 

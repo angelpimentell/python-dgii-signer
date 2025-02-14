@@ -20,8 +20,9 @@ pytest .\tests\signer_unit_test.py
 ```
 
 How to use
+
 ```Python
-from signers import DgiiSigner
+from dgii_signer import DgiiSigner
 
 signer = DgiiSigner("/path/cert.p12", "admin")
 xml_content = open("/path/invoice.xml").read()

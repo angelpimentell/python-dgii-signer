@@ -1,4 +1,3 @@
-import re
 import xml.etree.ElementTree as elementTree
 
 from cryptography.hazmat.primitives import serialization
