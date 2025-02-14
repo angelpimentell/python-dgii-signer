@@ -10,6 +10,13 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/angelpimentell/python-dgii-signer",
     packages=find_packages(),
-    install_requires=open("requirements.txt").read().splitlines(),
+    install_requires=[
+        "certifi==2025.1.31",
+        "cffi==1.17.1",
+        "cryptography==44.0.1",
+        "lxml==5.3.1",
+        "pycparser==2.22",
+        "signxml==4.0.3",
+    ],
     python_requires=">=3.13.1",
 )
