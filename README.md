@@ -6,7 +6,7 @@ Firmador de XML para DGII con Python.
 
 Python Version
 ```
-Python >= 3.9.13 | Python <= 3.13.1
+Python >= 3.8.0 | Python <= 3.13.1
 ```
 
 How to prepare
