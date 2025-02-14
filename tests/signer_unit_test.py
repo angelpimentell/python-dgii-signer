@@ -1,4 +1,4 @@
-from signer import Signer
+from signers import DgiiSigner
 import pathlib
 import os
 import re
@@ -11,7 +11,7 @@ def clean_content(xml_content):
 
 def test_sign_invoice():
     # Arrange
-    signer = Signer(f"{pathlib.Path().resolve()}{os.sep}files{os.sep}certificate.p12", "admin")
+    signer = DgiiSigner(f"{pathlib.Path().resolve()}{os.sep}files{os.sep}certificate.p12", "admin")
     xml_content = open(f"{pathlib.Path().resolve()}{os.sep}files{os.sep}invoice.xml").read()
     expected_xml_content = open(f"{pathlib.Path().resolve()}{os.sep}files{os.sep}invoice_signed.xml", encoding="utf-8").read()
 

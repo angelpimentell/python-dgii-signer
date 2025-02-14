@@ -9,7 +9,7 @@ from signxml.algorithms import CanonicalizationMethod
 
 
 
-class Signer:
+class DgiiSigner:
     def __init__(self, certificate_path, password):
         self.certificate_path = certificate_path
         self.password = password
