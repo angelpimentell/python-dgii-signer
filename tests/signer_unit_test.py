@@ -1,12 +1,7 @@
 from signers import DgiiSigner
 import pathlib
 import os
-import re
-
-def clean_content(xml_content):
-    xml_content = xml_content.replace("\n", "")
-    xml_content = re.sub(r">\s+<", "><", xml_content)
-    return xml_content.strip()
+from helpers import clean_xml
 
 
 def test_sign_invoice():
@@ -19,4 +14,4 @@ def test_sign_invoice():
     signed_xml_content = signer.sign(xml_content)
 
     # Assert
-    assert clean_content(expected_xml_content) == clean_content(signed_xml_content)
+    assert clean_xml(expected_xml_content) == clean_xml(signed_xml_content)

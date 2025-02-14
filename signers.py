@@ -7,6 +7,7 @@ from lxml import etree
 from signxml import XMLSignatureProcessor, XMLSigner
 from signxml.algorithms import CanonicalizationMethod
 
+from helpers import clean_xml
 
 
 class DgiiSigner:
@@ -48,7 +49,7 @@ class DgiiSigner:
         :rtype: str
         """
         private_key_pem, certificate_pem, adds = self.get_certificate_data()
-        xml_content = re.sub(r">\s+<", "><", xml_content)
+        xml_content = clean_xml(xml_content)
         xml_element = elementTree.fromstring(xml_content)
 
         for element in xml_element.iter():
