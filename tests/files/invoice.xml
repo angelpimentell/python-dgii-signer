@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ECF>
+    <Encabezado>
+        <Version>1.0</Version>
+        <IdDoc>
+            <TipoeCF>31</TipoeCF>
+            <eNCF>E310000000001</eNCF>
+            <FechaVencimientoSecuencia>31-12-2025</FechaVencimientoSecuencia>
+            <IndicadorMontoGravado>1</IndicadorMontoGravado>
+            <TipoIngresos>01</TipoIngresos>
+            <TipoPago>1</TipoPago>
+        </IdDoc>
+        <Emisor>
+            <RNCEmisor>123456789</RNCEmisor>
+            <RazonSocialEmisor>PIMENTEL SRL</RazonSocialEmisor>
+            <DireccionEmisor>Santo Domingo, D.N., Rep. Dom.</DireccionEmisor>
+            <InformacionAdicionalEmisor>EMPRESA DE SOFTWARE</InformacionAdicionalEmisor>
+            <FechaEmision>31-05-2024</FechaEmision>
+        </Emisor>
+        <Comprador>
+            <RNCComprador>101010632</RNCComprador>
+            <RazonSocialComprador>BANCO POPULAR</RazonSocialComprador>
+        </Comprador>
+        <Totales>
+            <MontoGravadoTotal>79840.29</MontoGravadoTotal>
+            <MontoGravadoI1>79840.29</MontoGravadoI1>
+            <ITBIS1>18</ITBIS1>
+            <TotalITBIS>14371.25</TotalITBIS>
+            <TotalITBIS1>14371.25</TotalITBIS1>
+            <MontoTotal>94211.54</MontoTotal>
+        </Totales>
+    </Encabezado>
+    <DetallesItems>
+        <Item>
+            <NumeroLinea>1</NumeroLinea>
+            <IndicadorFacturacion>1</IndicadorFacturacion>
+            <NombreItem>SERVICIO DE SOFTWARE</NombreItem>
+            <IndicadorBienoServicio>2</IndicadorBienoServicio>
+            <CantidadItem>1</CantidadItem>
+            <PrecioUnitarioItem>79840.29</PrecioUnitarioItem>
+            <MontoItem>79840.29</MontoItem>
+        </Item>
+    </DetallesItems>
+    <FechaHoraFirma>29-08-2024 14:17:15</FechaHoraFirma>
+</ECF>
