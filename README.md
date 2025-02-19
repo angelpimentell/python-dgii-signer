@@ -1,13 +1,10 @@
 # Python Dgii Signer
 
+![Python Versions](https://img.shields.io/badge/Python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
+
 Firmador de XML para DGII con Python.
 
 <br />
-
-Python Version
-```
-Python >= 3.8.0 | Python <= 3.13.1
-```
 
 How to prepare
 ```Bash

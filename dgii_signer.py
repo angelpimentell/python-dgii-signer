@@ -14,48 +14,37 @@ class DgiiSigner:
         self.certificate_path = certificate_path
         self.password = password
 
-    def get_certificate_data(self) -> (bytes, bytes, any):
-        """
-        Loads a PKCS12 certificate file and extracts the private key, certificate, and additional data.
-
-        :return: A tuple containing the private key in PEM format, the certificate in PEM format,
-                 and additional information from the PKCS12 file.
-        :rtype: tuple (bytes, bytes, Any)
-        """
-        with open(self.certificate_path, "rb") as p12_file:
-            p12_data = p12_file.read()
-            private_key, certificate, adds = pkcs12.load_key_and_certificates(
-                p12_data,
-                self.password.encode(),
-            )
-            private_key_pem = private_key.private_bytes(
-                encoding=serialization.Encoding.PEM,
-                format=serialization.PrivateFormat.TraditionalOpenSSL,
-                encryption_algorithm=serialization.NoEncryption(),
-            )
-            certificate_pem = certificate.public_bytes(
-                encoding=serialization.Encoding.PEM
-            )
-            return private_key_pem, certificate_pem, adds
-
-    def sign(self, xml_content: str) -> str:
-        """
-        Signs an XML string, ensuring its integrity and compliance with required standards.
-
-        :param xml_content: The XML string to be signed.
-        :type xml_content: str
-        :return: The signed and cleaned XML string.
-        :rtype: str
-        """
-        private_key_pem, certificate_pem, adds = self.get_certificate_data()
-        xml_content = clean_xml(xml_content)
-        xml_element = elementTree.fromstring(xml_content)
-
-        for element in xml_element.iter():
+    def clean_xml_inputs(self, element_tree):
+        for element in element_tree.iter():
             if element.text is not None:
                 element.text = element.text.strip().replace("\n", "").replace("\r", "")
             if element.tail is not None:
                 element.tail = element.tail.strip().replace("\n", "").replace("\r", "")
+
+    def get_certificate_data(self) -> (bytes, bytes, any):
+        cert_file = open(self.certificate_path, "rb")
+        cert_data = cert_file.read()
+
+        private_key, certificate, adds = pkcs12.load_key_and_certificates(
+            cert_data,
+            self.password.encode(),
+        )
+        private_key_pem = private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.TraditionalOpenSSL,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+        certificate_pem = certificate.public_bytes(
+            encoding=serialization.Encoding.PEM
+        )
+
+        cert_file.close()
+        return private_key_pem, certificate_pem, adds
+
+    def sign(self, xml_content: str) -> str:
+        private_key_pem, certificate_pem, _ = self.get_certificate_data()
+        xml_element = elementTree.fromstring(clean_xml(xml_content))
+        self.clean_xml_inputs(xml_element)
 
         signer = XMLSigner(
             c14n_algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"
@@ -63,17 +52,10 @@ class DgiiSigner:
 
         signed_xml = signer.sign(xml_element, key=private_key_pem, cert=certificate_pem)
 
-        for element in signed_xml.iter():
-            if element.text is not None:
-                element.text = element.text.strip().replace("\n", "").replace("\r", "")
-            if element.tail is not None:
-                element.tail = element.tail.strip().replace("\n", "").replace("\r", "")
-
         # Remove prefixes
         for child in signed_xml.iter():
-            tag = child.tag
-            if "}" in tag:
-                child.tag = tag.split("}", 1)[1]
+            if "}" in child.tag:
+                child.tag = child.tag.split("}", 1)[1]
 
         signed_xml.find("Signature").set("xmlns", "http://www.w3.org/2000/09/xmldsig#")
 
