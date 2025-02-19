@@ -1,6 +1,9 @@
 # Python Dgii Signer
 
-![Python Versions](https://img.shields.io/badge/Python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
+<p align="left">
+  <img src="https://img.shields.io/badge/pip-23.2.1-orange" alt="Pip Version">
+  <img src="https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue" alt="Python Versions">
+</p>
 
 Firmador de XML para DGII con Python.
 
