@@ -9,18 +9,17 @@ Firmador de XML para DGII con Python.
 
 <br />
 
-How to prepare
+## How to prepare
 ```Bash
 pip install -r .\requirements.txt
 ```
 
-Run tests
+## Run tests
 ```Bash
 pytest .\tests\signer_unit_test.py
 ```
 
-How to use
-
+## How to use
 ```Python
 from dgii_signer import DgiiSigner
 
